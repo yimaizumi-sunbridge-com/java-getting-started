@@ -85,4 +85,13 @@ public class Main {
     }
   }
 
+  @RequestMapping("/test")
+  String test(@RequestHeader("REMOTE_ADDR") String remoteAddress, Map<String, Object> model) {
+      ArrayList<String> output = new ArrayList<String>();
+      output.add("Access from: " + remoteAddress);
+
+      model.put("records", output);
+      return "db";
+  }
+
 }

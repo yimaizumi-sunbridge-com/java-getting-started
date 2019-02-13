@@ -86,10 +86,11 @@ public class Main {
   }
 
   @RequestMapping("/test")
-  String test(Map<String, Object> model) {
+  String test(@RequestHeader(value="User-Agent", required=false) String agent, Map<String, Object> model) {
 //  String test(@RequestHeader("REMOTE_ADDR") String remoteAddress, Map<String, Object> model) {
     String remoteAddress = "unknown";
       ArrayList<String> output = new ArrayList<String>();
+      output.add("User-Agent: " + agent);
       output.add("Access from: " + remoteAddress);
 
       model.put("records", output);
